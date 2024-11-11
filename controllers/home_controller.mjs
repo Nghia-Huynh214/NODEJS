@@ -1,12 +1,12 @@
+import City from "../models/city.mjs";
 class HomeController {
-    static index(req, res) {
-      console.log(req.query);
-      res.render("index", { title: "Home Page" });
-    }
-    static about(req, res) {
-      res.send(`<h1> Hello About Page!!</h1>`);
-    }
+  static async index(req, res) {
+    let data = await City.find({});
+    let city = parseInt(req.query.city);
+    let plate_no = data[city].plate_no;
+    console.log(plate_no);
+    res.render("index", { title: "Home Page", data, plate_no });
   }
-  
-  export default HomeController;
-  
+}
+
+export default HomeController;

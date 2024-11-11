@@ -1,4 +1,5 @@
 <%- include('layouts/header'); %>
+
 <!-- Page Container -->
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
 
@@ -94,13 +95,13 @@
                     Experience</h2>
                 <% workExperience.forEach((item)=>{ %>
                 <div class="w3-container">
-                    <h5 class="w3-opacity"><b><%= item.name %></b></h5>
+                    <h5 class="w3-opacity"><b> <%= item.name %>
+                        </b></h5>
                     <h6 class="w3-text-teal"><i
-                            class="fa fa-calendar fa-fw w3-margin-right"></i><%=
-                        item.start_date %>
-                        - <span
-                            class="w3-tag w3-teal w3-round"><%=
-                            item.end_date %></span></h6>
+                            class="fa fa-calendar fa-fw w3-margin-right"></i>
+                        <%= item.start_date %> <span
+                            class="w3-tag w3-teal w3-round">
+                            <%= item.end_date %></span></h6>
                     <p><%= item.description %></p>
                     <hr>
                 </div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm Đặt Chỗ</title>
+</head>
+<body>
+    <h1>Thêm Đặt Chỗ</h1>
+    <form id="addForm">
+        <label for="customerName">Tên Khách Hàng:</label>
+        <input type="text" id="customerName" name="customerName" required><br><br>
+
+        <label for="date">Ngày:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="time">Giờ:</label>
+        <input type="time" id="time" name="time" required><br><br>
+
+        <button type="submit">Thêm</button>
+    </form>
+
+    <script>
+        document.getElementById('addForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const customerName = document.getElementById('customerName').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            await fetch('http://localhost:3000/api/bookings/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ customerName, date, time })
+            });
+
+            alert('Đặt chỗ thành công!');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
